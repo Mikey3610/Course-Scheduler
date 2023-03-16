@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.c196_application_latest.Entity.Term;
 import com.example.c196_application_latest.R;
-import com.example.c196_application_latest.UI.TermDetails;
+import com.example.c196_application_latest.UI.AddTerms;
+import com.example.c196_application_latest.UI.EditTerms_CoursesList;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     final Term current = mTerms.get(position);
-                    Intent intent = new Intent(context, TermDetails.class);
+                    Intent intent = new Intent(context, EditTerms_CoursesList.class);
                     intent.putExtra("termId", current.getTermId());
                     intent.putExtra("termName", current.getTermName());
                     intent.putExtra("termStart", current.getTermStart());

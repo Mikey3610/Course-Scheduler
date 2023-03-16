@@ -13,8 +13,8 @@
         android:theme="@style/Theme.C196_Application_Latest"
         tools:targetApi="31">
         <activity
-            android:name=".UI.AssessmentsDetails"
-            android:parentActivityName=".UI.AssessmentsList"
+            android:name=".UI.AddEditAssessments"
+            android:parentActivityName=".UI.AddCourses"
             android:label="Add/Edit Assessments"
             android:exported="false">
             <meta-data
@@ -22,36 +22,36 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".UI.AssessmentsList"
-            android:label="Assessments List"
-            android:parentActivityName=".UI.CoursesList"
+            android:name=".UI.AddCourses"
+            android:label="Add Courses"
+            android:parentActivityName=".UI.EditTerms_CoursesList"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".UI.TermDetails"
+            android:name=".UI.AddTerms"
             android:exported="false"
-            android:label="Add/Delete Terms"
+            android:label="Add Terms"
             android:parentActivityName=".UI.AllTerms">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".UI.CourseDetails"
+            android:name=".UI.EditCourses_AssessmentsList"
             android:exported="false"
-            android:label="Add/Edit Course"
-            android:parentActivityName=".UI.CoursesList">
+            android:label="Edit Courses and Assessments List"
+            android:parentActivityName=".UI.EditTerms_CoursesList">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".UI.CoursesList"
+            android:name=".UI.EditTerms_CoursesList"
             android:exported="false"
-            android:label="Courses List"
+            android:label="Edit Terms and Courses List"
             android:parentActivityName=".UI.AllTerms">
             <meta-data
                 android:name="android.app.lib_name"

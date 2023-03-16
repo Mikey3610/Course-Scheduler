@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.c196_application_latest.R;
 
-public class AssessmentsList extends AppCompatActivity {
+public class AddCourses extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_assessments_list);
+        setContentView(R.layout.activity_add_courses);
     }
 }

@@ -6,12 +6,12 @@ import android.os.Bundle;
 
 import com.example.c196_application_latest.R;
 
-public class CourseDetails extends AppCompatActivity {
+public class EditCourses_AssessmentsList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_details);
+        setContentView(R.layout.activity_edit_courses_assessments_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

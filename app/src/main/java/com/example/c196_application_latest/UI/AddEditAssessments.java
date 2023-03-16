@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.c196_application_latest.R;
 
-public class TermDetails extends AppCompatActivity {
+public class AddEditAssessments extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_term_details);
+        setContentView(R.layout.activity_add_edit_assessments);
     }
 }

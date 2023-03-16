@@ -49,7 +49,7 @@ public class AllTerms extends AppCompatActivity {
     }
 
     public void addTerm(View view) {
-        Intent intent = new Intent(AllTerms.this, TermDetails.class);
+        Intent intent = new Intent(AllTerms.this, AddTerms.class);
         startActivity(intent);
     }
 }
