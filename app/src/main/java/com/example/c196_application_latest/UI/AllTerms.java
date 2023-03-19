@@ -25,7 +25,8 @@ public class AllTerms extends AppCompatActivity {
         setContentView(R.layout.activity_all_terms);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+
+        RecyclerView recyclerView = findViewById(R.id.allTermsRecyclerView);
         Repository repo = new Repository(getApplication());
         List<Term> terms = repo.getAllTerms();
         final TermAdapter adapter = new TermAdapter(this);
