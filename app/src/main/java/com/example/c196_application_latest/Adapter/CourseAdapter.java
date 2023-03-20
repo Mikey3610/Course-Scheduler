@@ -28,13 +28,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     final Course current = mCourses.get(position);
+                    //TODO below intent may be the wrong page
                     Intent intent = new Intent(context, EditCourses_AssessmentsList.class);
                     intent.putExtra("courseId", current.getCourseId());
                     intent.putExtra("termId", current.getTermId());
                     intent.putExtra("courseTitle", current.getCourseTitle());
                     intent.putExtra("courseStart", current.getCourseStart());
                     intent.putExtra("courseEnd", current.getCourseEnd());
-                    intent.putExtra("instructorId", current.getInstructorId());
+                    intent.putExtra("courseStatus", current.getCourseStatus());
                     intent.putExtra("instructorName", current.getInstructorName());
                     intent.putExtra("instructorPhone", current.getInstructorPhone());
                     intent.putExtra("instructorEmail", current.getInstructorEmail());

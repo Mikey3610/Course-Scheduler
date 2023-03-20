@@ -22,7 +22,6 @@ public class AddCourses extends AppCompatActivity {
     EditText editInstructorEmail;
     EditText editCourseNotes;
 
-    int instructorId;
     int courseId;
     int termId;
 
@@ -58,7 +57,7 @@ public class AddCourses extends AppCompatActivity {
         courseTitle = getIntent().getStringExtra("courseTitle");
         courseStart = getIntent().getStringExtra("courseStart");
         courseEnd = getIntent().getStringExtra("courseEnd");
-        instructorId = getIntent().getIntExtra("instructorId", -1);
+        courseStatus = getIntent().getStringExtra("courseStatus");
         instructorName = getIntent().getStringExtra("instructorName");
         instructorPhone = getIntent().getStringExtra("instructorPhone");
         instructorEmail = getIntent().getStringExtra("instructorEmail");
@@ -72,13 +71,14 @@ public class AddCourses extends AppCompatActivity {
         if (courseId == -1){
             int newId = repository.getAllCourses().get(repository.getAllCourses().size() - 1).getCourseId() +1;
 
-            //TODO Need to figure out if termId and InstructorId for the below object are correctly written
             course = new Course(newId, termId, editCourseTitle.getText().toString(), editCourseStart.getText().toString(),
-                    editCourseEnd.getText().toString(), editCourseStatus.getText().toString(), instructorId, editInstructorName.getText().toString(), editInstructorPhone.getText().toString(), editInstructorEmail.getText().toString(), editCourseNotes.getText().toString());
+                    editCourseEnd.getText().toString(), editCourseStatus.getText().toString(), editInstructorName.getText().toString(),
+                    editInstructorPhone.getText().toString(), editInstructorEmail.getText().toString(), editCourseNotes.getText().toString());
             repository.insert(course);
         } else {
             course = new Course(courseId, termId, editCourseTitle.getText().toString(), editCourseStart.getText().toString(), editCourseEnd.getText().toString(),
-                    editCourseStatus.getText().toString(), instructorId, editInstructorName.getText().toString(), editInstructorPhone.getText().toString(), editInstructorEmail.getText().toString(), editCourseNotes.getText().toString());
+                    editCourseStatus.getText().toString(), editInstructorName.getText().toString(), editInstructorPhone.getText().toString(),
+                    editInstructorEmail.getText().toString(), editCourseNotes.getText().toString());
             repository.update(course);
         }
 

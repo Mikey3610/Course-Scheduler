@@ -13,20 +13,18 @@ public class Course {
     private String courseStart;
     private String courseEnd;
     private String courseStatus;
-    private int instructorId;
     private String instructorName;
     private String instructorPhone;
     private String instructorEmail;
     private String courseNotes;
 
-    public Course(int courseId, int termId, String courseTitle, String courseStart, String courseEnd, String courseStatus, int instructorId, String instructorName, String instructorPhone, String instructorEmail, String courseNotes) {
+    public Course(int courseId, int termId, String courseTitle, String courseStart, String courseEnd, String courseStatus, String instructorName, String instructorPhone, String instructorEmail, String courseNotes) {
         this.courseId = courseId;
         this.termId = termId;
         this.courseTitle = courseTitle;
         this.courseStart = courseStart;
         this.courseEnd = courseEnd;
         this.courseStatus = courseStatus;
-        this.instructorId = instructorId;
         this.instructorName = instructorName;
         this.instructorPhone = instructorPhone;
         this.instructorEmail = instructorEmail;
@@ -113,14 +111,6 @@ public class Course {
         this.courseNotes = courseNotes;
     }
 
-    public int getInstructorId() {
-        return instructorId;
-    }
-
-    public void setInstructorId(int instructorId) {
-        this.instructorId = instructorId;
-    }
-
     @Override
     public String toString() {
         return "Course{" +
@@ -130,10 +120,9 @@ public class Course {
                 ", courseStart='" + courseStart + '\'' +
                 ", courseEnd='" + courseEnd + '\'' +
                 ", courseStatus='" + courseStatus + '\'' +
-                ", instructorId=" + instructorId +
-                ", courseInstructorName='" + instructorName + '\'' +
-                ", courseInstructorPhone='" + instructorPhone + '\'' +
-                ", courseInstructorEmail='" + instructorEmail + '\'' +
+                ", instructorName='" + instructorName + '\'' +
+                ", instructorPhone='" + instructorPhone + '\'' +
+                ", instructorEmail='" + instructorEmail + '\'' +
                 ", courseNotes='" + courseNotes + '\'' +
                 '}';
     }

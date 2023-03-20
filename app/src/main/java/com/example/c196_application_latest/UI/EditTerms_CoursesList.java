@@ -81,6 +81,7 @@ public class EditTerms_CoursesList extends AppCompatActivity {
 
     public void addCourse(View view) {
         Intent intent = new Intent(EditTerms_CoursesList.this, AddCourses.class);
+        intent.putExtra("termId", termId);
         startActivity(intent);
     }
 }
