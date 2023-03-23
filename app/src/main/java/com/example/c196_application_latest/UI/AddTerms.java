@@ -51,7 +51,10 @@ public class AddTerms extends AppCompatActivity {
             repository.update(term);
         }
 
-        Intent intent = new Intent(AddTerms.this, AllTerms.class);
-        startActivity(intent);
+        //Intent intent = new Intent(AddTerms.this, AllTerms.class);
+        //startActivity(intent);
+
+        finish();
     }
+    //TODO Need to create onResume method
 }

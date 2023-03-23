@@ -35,12 +35,21 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //TODO Does this code need to be changed so the recyclerview doesnt show in all the terms?
+        repository = new Repository(getApplication());
         RecyclerView recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
         Repository repo = new Repository(getApplication());
         List<Course> courses = repo.getAllCourses();
         final CourseAdapter adapter = new CourseAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        for(Course c: repository.getAllCourses()){
+            if (c.getTermId() == termId){
+                courses.add(c);
+            }
+        }
         adapter.setCourses(courses);
 
         editTermNameText = findViewById(R.id.editTermNameText);
@@ -56,7 +65,6 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         editTermStartText.setText(termStart);
         editTermEndText.setText(termEnd);
 
-        repository = new Repository(getApplication());
     }
 
 
@@ -71,8 +79,9 @@ public class EditTerms_CoursesList extends AppCompatActivity {
             repository.update(term);
         }
 
-        Intent intent = new Intent(EditTerms_CoursesList.this, AllTerms.class);
-        startActivity(intent);
+        //Intent intent = new Intent(EditTerms_CoursesList.this, AllTerms.class);
+        //startActivity(intent);
+        finish();
     }
 
     public void deleteTerm(View view) {

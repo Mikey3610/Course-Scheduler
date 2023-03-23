@@ -98,4 +98,8 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         intent.putExtra("courseId", courseId);
         startActivity(intent);
     }
+
+    //TODO Add code here to save edited course fields in the Edit Courses/Assessments page
+    public void saveEditCourse(View view) {
+    }
 }

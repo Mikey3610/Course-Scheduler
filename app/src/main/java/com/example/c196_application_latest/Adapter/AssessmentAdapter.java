@@ -30,7 +30,6 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     final Assessment current = mAssessments.get(position);
-                    //TODO Below intent may be the wrong page
                     Intent intent = new Intent(context, AddEditAssessments.class);
                     intent.putExtra("assessmentId", current.getAssessmentId());
                     intent.putExtra("assessmentCourseId", current.getAssessmentCourseId());
