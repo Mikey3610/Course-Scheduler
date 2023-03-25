@@ -51,10 +51,29 @@ public class AddTerms extends AppCompatActivity {
             repository.update(term);
         }
 
-        //Intent intent = new Intent(AddTerms.this, AllTerms.class);
-        //startActivity(intent);
+        Intent intent = new Intent(AddTerms.this, AllTerms.class);
+        startActivity(intent);
 
-        finish();
+        //finish();
     }
+
     //TODO Need to create onResume method
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //Create a list from courses
+        //Assign a repo using the getAllCourses method
+        //Create a recyclerview
+        //Create a courseadapter
+        //For the recyclerview, set the adapter and the .setlayoutmanager
+        //for loop which will cycle through list to get all the correct courses for the term
+
+        //Put this into an onClick button
+        if (termId != -1) {
+            editTermName.setText(termName);
+            editTermStart.setText(termStart);
+            editTermEnd.setText(termEnd);
+        }
+    }
 }

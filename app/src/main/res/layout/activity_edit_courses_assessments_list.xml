@@ -227,12 +227,13 @@
         app:srcCompat="@drawable/ic_baseline_add_24" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/deleteCourseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="15dp"
         android:text="Delete Course"
+        android:onClick="deleteCourseButton"
         app:layout_constraintBottom_toBottomOf="@+id/saveCourseButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/saveCourseButton"

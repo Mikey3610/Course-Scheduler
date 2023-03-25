@@ -85,4 +85,18 @@ public class AddCourses extends AppCompatActivity {
         Intent intent = new Intent(AddCourses.this, EditTerms_CoursesList.class);
         startActivity(intent);
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        editCourseTitle.setText(courseTitle);
+        editCourseStart.setText(courseStart);
+        editCourseEnd.setText(courseEnd);
+        editCourseStatus.setText(courseStatus);
+        editInstructorName.setText(instructorName);
+        editInstructorPhone.setText(instructorPhone);
+        editInstructorEmail.setText(instructorEmail);
+        editCourseNotes.setText(courseNotes);
+    }
 }

@@ -99,7 +99,10 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //TODO Add code here to save edited course fields in the Edit Courses/Assessments page
     public void saveEditCourse(View view) {
+    }
+
+    public void deleteCourseButton(View view) {
+
     }
 }

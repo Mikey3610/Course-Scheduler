@@ -16,6 +16,7 @@ import com.example.c196_application_latest.Entity.Course;
 import com.example.c196_application_latest.Entity.Term;
 import com.example.c196_application_latest.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EditTerms_CoursesList extends AppCompatActivity {
@@ -35,11 +36,14 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //TODO Does this code need to be changed so the recyclerview doesnt show in all the terms?
+
         repository = new Repository(getApplication());
         RecyclerView recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
         Repository repo = new Repository(getApplication());
+
+        //TODO Does this code need to be changed so the recyclerview doesnt show in all the terms?
         List<Course> courses = repo.getAllCourses();
+
         final CourseAdapter adapter = new CourseAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -79,9 +83,10 @@ public class EditTerms_CoursesList extends AppCompatActivity {
             repository.update(term);
         }
 
-        //Intent intent = new Intent(EditTerms_CoursesList.this, AllTerms.class);
-        //startActivity(intent);
-        finish();
+        //TODO Check if this is correct
+        Intent intent = new Intent(EditTerms_CoursesList.this, AllTerms.class);
+        startActivity(intent);
+        //finish();
     }
 
     public void deleteTerm(View view) {
