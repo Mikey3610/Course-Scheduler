@@ -83,10 +83,12 @@ public class AddCourses extends AppCompatActivity {
         }
 
         Intent intent = new Intent(AddCourses.this, EditTerms_CoursesList.class);
+        intent.putExtra("termId", termId);
         startActivity(intent);
     }
 
 
+    /*
     @Override
     protected void onResume() {
         super.onResume();
@@ -99,4 +101,6 @@ public class AddCourses extends AppCompatActivity {
         editInstructorEmail.setText(instructorEmail);
         editCourseNotes.setText(courseNotes);
     }
+
+     */
 }

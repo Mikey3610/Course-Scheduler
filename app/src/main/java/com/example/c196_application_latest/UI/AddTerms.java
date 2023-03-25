@@ -54,7 +54,6 @@ public class AddTerms extends AppCompatActivity {
         Intent intent = new Intent(AddTerms.this, AllTerms.class);
         startActivity(intent);
 
-        //finish();
     }
 
     //TODO Need to create onResume method
