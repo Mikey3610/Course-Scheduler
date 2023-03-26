@@ -28,6 +28,7 @@ public class AllTerms extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.allTermsRecyclerView);
         Repository repo = new Repository(getApplication());
+
         List<Term> terms = repo.getAllTerms();
         final TermAdapter adapter = new TermAdapter(this);
         recyclerView.setAdapter(adapter);

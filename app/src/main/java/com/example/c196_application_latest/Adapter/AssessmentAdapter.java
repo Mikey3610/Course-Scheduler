@@ -11,10 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.c196_application_latest.Entity.Assessment;
-import com.example.c196_application_latest.Entity.Course;
 import com.example.c196_application_latest.R;
 import com.example.c196_application_latest.UI.AddEditAssessments;
-import com.example.c196_application_latest.UI.EditCourses_AssessmentsList;
 
 import java.util.List;
 
@@ -37,6 +35,7 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
                     intent.putExtra("assessmentStart", current.getAssessmentStart());
                     intent.putExtra("assessmentEnd", current.getAssessmentEnd());
                     intent.putExtra("assessmentTitle", current.getAssessmentTitle());
+                    intent.putExtra("assessmentDescription", current.getAssessmentDescription());
                     context.startActivity(intent);
                 }
             });
@@ -55,7 +54,7 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
     @Override
     public AssessmentAdapter.AssessmentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.assessment_list_item,parent, false);
-        return new AssessmentAdapter.AssessmentViewHolder(itemView);
+        return new AssessmentViewHolder(itemView);
     }
 
     @Override

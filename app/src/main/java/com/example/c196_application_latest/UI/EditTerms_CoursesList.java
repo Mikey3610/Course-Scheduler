@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.c196_application_latest.Adapter.CourseAdapter;
 import com.example.c196_application_latest.Adapter.TermAdapter;
@@ -29,6 +30,7 @@ public class EditTerms_CoursesList extends AppCompatActivity {
     String termEnd;
     Repository repository;
 
+
     //Test code
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,9 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        repository = new Repository(getApplication());
         RecyclerView recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
+        repository = new Repository(getApplication());
+
         final CourseAdapter adapter = new CourseAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -58,9 +61,8 @@ public class EditTerms_CoursesList extends AppCompatActivity {
 
         //TODO Does this code need to be changed so the recyclerview doesnt show in all the terms?
         List<Course> courses = new ArrayList<>();
-
-        for(Course c: repository.getAllCourses()){
-            if (c.getTermId() == termId){
+        for (Course c : repository.getAllCourses()) {
+            if (c.getTermId() == termId) {
                 courses.add(c);
             }
         }
@@ -115,8 +117,8 @@ public class EditTerms_CoursesList extends AppCompatActivity {
 
     public void saveAddTerm(View view) {
         Term term;
-        if (termId == -1){
-            int newId = repository.getAllTerms().get(repository.getAllTerms().size() - 1).getTermId() +1;
+        if (termId == -1) {
+            int newId = repository.getAllTerms().get(repository.getAllTerms().size() - 1).getTermId() + 1;
             term = new Term(newId, editTermNameText.getText().toString(), editTermStartText.getText().toString(), editTermEndText.getText().toString());
             repository.insert(term);
         } else {
@@ -139,3 +141,34 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         startActivity(intent);
     }
 }
+    //onResume method below
+    /*
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        RecyclerView recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
+        repository = new Repository(getApplication());
+
+        final CourseAdapter adapter = new CourseAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Reload data from the database and update the UI elements
+        List<Course> courses = new ArrayList<>();
+        for (Course c : repository.getAllCourses()) {
+            if (c.getTermId() == termId) {
+                courses.add(c);
+            }
+        }
+        adapter.setCourses(courses);
+    }
+     */
+
+
+    //Create a list from courses
+    //Assign a repo using the getAllCourses method
+    //Create a recyclerview
+    //Create a courseadapter
+    //For the recyclerview, set the adapter and the .setlayoutmanager
+    //for loop which will cycle through list to get all the correct courses for the term

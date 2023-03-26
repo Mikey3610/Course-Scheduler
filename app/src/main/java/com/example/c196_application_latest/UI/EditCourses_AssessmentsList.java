@@ -16,6 +16,7 @@ import com.example.c196_application_latest.Entity.Assessment;
 import com.example.c196_application_latest.Entity.Course;
 import com.example.c196_application_latest.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EditCourses_AssessmentsList extends AppCompatActivity {
@@ -51,12 +52,16 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         RecyclerView recyclerView = findViewById(R.id.AssessmentsForCourseRecyclerView);
-        Repository repo = new Repository(getApplication());
-        List<Assessment> assessments = repo.getAllAssessments();
+        repository = new Repository(getApplication());
+
+        //Repository repo = new Repository(getApplication());
+        //List<Assessment> assessments = repo.getAllAssessments();
+
         final AssessmentAdapter adapter = new AssessmentAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter.setAssessments(assessments);
+
+        //adapter.setAssessments(assessments);
 
         editCourseNameText = findViewById(R.id.editCourseNameText);
         editCourseStartText = findViewById(R.id.editCourseStartText);
@@ -88,7 +93,15 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         editInstructorEmailText.setText(instructorEmail);
         editCourseNotesText.setText(courseNotes);
 
-        repository = new Repository(getApplication());
+
+
+        List<Assessment> assessments = new ArrayList<>();
+        for(Assessment a: repository.getAllAssessments()){
+            if (a.getAssessmentCourseId() == courseId){
+                assessments.add(a);
+            }
+        }
+        adapter.setAssessments(assessments);
 
     }
 

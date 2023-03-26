@@ -22,6 +22,7 @@ public class Assessment {
         this.assessmentStart = assessmentStart;
         this.assessmentEnd = assessmentEnd;
         this.assessmentTitle = assessmentTitle;
+        this.assessmentDescription = assessmentDescription;
     }
 
     public int getAssessmentId() {
