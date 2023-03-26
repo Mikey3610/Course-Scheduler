@@ -46,20 +46,22 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //EditText fields 1st
         editTermNameText = findViewById(R.id.editTermNameText);
         editTermStartText = findViewById(R.id.editTermStartText);
         editTermEndText = findViewById(R.id.editTermEndText);
 
+        //Info from adapters 2nd
         termId = getIntent().getIntExtra("termId", -1);
         termName = getIntent().getStringExtra("termName");
         termStart = getIntent().getStringExtra("termStart");
         termEnd = getIntent().getStringExtra("termEnd");
 
+        //Set the text of the EditText fields 3rd
         editTermNameText.setText(termName);
         editTermStartText.setText(termStart);
         editTermEndText.setText(termEnd);
 
-        //TODO Does this code need to be changed so the recyclerview doesnt show in all the terms?
         List<Course> courses = new ArrayList<>();
         for (Course c : repository.getAllCourses()) {
             if (c.getTermId() == termId) {
@@ -111,7 +113,6 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         editTermEndText.setText(termEnd);
 
     }
-
      */
 
 
@@ -140,8 +141,8 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         intent.putExtra("termId", termId);
         startActivity(intent);
     }
-}
     //onResume method below
+
     /*
     @Override
     protected void onResume() {
@@ -164,6 +165,9 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         adapter.setCourses(courses);
     }
      */
+
+}
+
 
 
     //Create a list from courses

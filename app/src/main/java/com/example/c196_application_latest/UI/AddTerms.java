@@ -57,6 +57,7 @@ public class AddTerms extends AppCompatActivity {
     }
 
     //TODO Need to create onResume method
+    /*
     @Override
     protected void onResume() {
         super.onResume();
@@ -75,4 +76,5 @@ public class AddTerms extends AppCompatActivity {
             editTermEnd.setText(termEnd);
         }
     }
+    */
 }

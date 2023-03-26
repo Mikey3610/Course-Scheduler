@@ -25,6 +25,10 @@ public class AddCourses extends AppCompatActivity {
     int courseId;
     int termId;
 
+    String termName;
+    String termStart;
+    String termEnd;
+
     String courseTitle;
     String courseStart;
     String courseEnd;
@@ -82,8 +86,14 @@ public class AddCourses extends AppCompatActivity {
             repository.update(course);
         }
 
-        Intent intent = new Intent(AddCourses.this, EditTerms_CoursesList.class);
+        //Intent intent = new Intent(AddCourses.this, EditTerms_CoursesList.class);
+        //Testing going back to AllTerms instead of the Terms&Courses page (below)
+        Intent intent = new Intent(AddCourses.this, AllTerms.class);
+
         intent.putExtra("termId", termId);
+        intent.putExtra("termName", termName);
+        intent.putExtra("termStart", termStart);
+        intent.putExtra("termEnd", termEnd);
         startActivity(intent);
     }
 
