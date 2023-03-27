@@ -30,8 +30,9 @@ public class EditTerms_CoursesList extends AppCompatActivity {
     String termEnd;
     Repository repository;
 
+    //TODO Added declaration of Recyclerview here
+    RecyclerView recyclerView;
 
-    //Test code
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,8 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        RecyclerView recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
+        //TODO Removed the RecyclerView class declaration from the line below
+        recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
         repository = new Repository(getApplication());
 
         final CourseAdapter adapter = new CourseAdapter(this);
@@ -52,7 +54,8 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         editTermEndText = findViewById(R.id.editTermEndText);
 
         //Info from adapters 2nd
-        termId = getIntent().getIntExtra("termId", -1);
+        //TODO Should the default value of the termId below be 'termId' or '-1'?
+        termId = getIntent().getIntExtra("termId", termId);
         termName = getIntent().getStringExtra("termName");
         termStart = getIntent().getStringExtra("termStart");
         termEnd = getIntent().getStringExtra("termEnd");
@@ -70,51 +73,6 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         }
         adapter.setCourses(courses);
     }
-
-    /* Original code
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_terms_courses_list);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        repository = new Repository(getApplication());
-        RecyclerView recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
-        Repository repo = new Repository(getApplication());
-
-        //TODO Does this code need to be changed so the recyclerview doesnt show in all the terms?
-        List<Course> courses = repo.getAllCourses();
-
-        final CourseAdapter adapter = new CourseAdapter(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-        for(Course c: repository.getAllCourses()){
-            if (c.getTermId() == termId){
-                courses.add(c);
-            }
-        }
-        adapter.setCourses(courses);
-
-        editTermNameText = findViewById(R.id.editTermNameText);
-        editTermStartText = findViewById(R.id.editTermStartText);
-        editTermEndText = findViewById(R.id.editTermEndText);
-
-        termId = getIntent().getIntExtra("termId", -1);
-        termName = getIntent().getStringExtra("termName");
-        termStart = getIntent().getStringExtra("termStart");
-        termEnd = getIntent().getStringExtra("termEnd");
-
-        editTermNameText.setText(termName);
-        editTermStartText.setText(termStart);
-        editTermEndText.setText(termEnd);
-
-    }
-     */
-
 
     public void saveAddTerm(View view) {
         Term term;
@@ -141,14 +99,16 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         intent.putExtra("termId", termId);
         startActivity(intent);
     }
+
     //onResume method below
 
-    /*
     @Override
     protected void onResume() {
         super.onResume();
 
-        RecyclerView recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
+        //TODO Commented out the below line
+        //TODO
+        //RecyclerView recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
         repository = new Repository(getApplication());
 
         final CourseAdapter adapter = new CourseAdapter(this);
@@ -156,6 +116,11 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Reload data from the database and update the UI elements
+        //TODO Added these 3 lines
+        editTermNameText.setText(termName);
+        editTermStartText.setText(termStart);
+        editTermEndText.setText(termEnd);
+
         List<Course> courses = new ArrayList<>();
         for (Course c : repository.getAllCourses()) {
             if (c.getTermId() == termId) {
@@ -164,11 +129,9 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         }
         adapter.setCourses(courses);
     }
-     */
+
 
 }
-
-
 
     //Create a list from courses
     //Assign a repo using the getAllCourses method

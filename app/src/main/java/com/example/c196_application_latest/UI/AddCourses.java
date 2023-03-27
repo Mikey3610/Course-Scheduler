@@ -57,6 +57,7 @@ public class AddCourses extends AppCompatActivity {
         editCourseNotes = findViewById(R.id.editCourseNotes);
 
         courseId = getIntent().getIntExtra("courseId", -1);
+        //TODO Should the termID default value below be 'termId' instead of '-1'?
         termId = getIntent().getIntExtra("termId", -1);
         courseTitle = getIntent().getStringExtra("courseTitle");
         courseStart = getIntent().getStringExtra("courseStart");
@@ -86,31 +87,17 @@ public class AddCourses extends AppCompatActivity {
             repository.update(course);
         }
 
-        //Intent intent = new Intent(AddCourses.this, EditTerms_CoursesList.class);
+        Intent intent = new Intent(AddCourses.this, EditTerms_CoursesList.class);
         //Testing going back to AllTerms instead of the Terms&Courses page (below)
-        Intent intent = new Intent(AddCourses.this, AllTerms.class);
+        //Intent intent = new Intent(AddCourses.this, AllTerms.class);
 
         intent.putExtra("termId", termId);
         intent.putExtra("termName", termName);
         intent.putExtra("termStart", termStart);
         intent.putExtra("termEnd", termEnd);
-        startActivity(intent);
+        //startActivity(intent);
+        finish();
     }
 
-
-    /*
-    @Override
-    protected void onResume() {
-        super.onResume();
-        editCourseTitle.setText(courseTitle);
-        editCourseStart.setText(courseStart);
-        editCourseEnd.setText(courseEnd);
-        editCourseStatus.setText(courseStatus);
-        editInstructorName.setText(instructorName);
-        editInstructorPhone.setText(instructorPhone);
-        editInstructorEmail.setText(instructorEmail);
-        editCourseNotes.setText(courseNotes);
-    }
-
-     */
+    //TODO Do I need an onResume method here so that term info shows up back in the 'EditTerms_CoursesList' class?
 }
