@@ -44,6 +44,8 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
 
     Repository repository;
 
+    RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        RecyclerView recyclerView = findViewById(R.id.AssessmentsForCourseRecyclerView);
+        recyclerView = findViewById(R.id.AssessmentsForCourseRecyclerView);
         repository = new Repository(getApplication());
 
         //Repository repo = new Repository(getApplication());
@@ -72,8 +74,8 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         editInstructorEmailText = findViewById(R.id.editInstructorEmailText);
         editCourseNotesText = findViewById(R.id.editCourseNotesText);
 
-        courseId = getIntent().getIntExtra("courseId", -1);
-        termId = getIntent().getIntExtra("termId", -1);
+        courseId = getIntent().getIntExtra("courseId", courseId);
+        termId = getIntent().getIntExtra("termId", termId);
         courseTitle = getIntent().getStringExtra("courseTitle");
         courseStart = getIntent().getStringExtra("courseStart");
         courseEnd = getIntent().getStringExtra("courseEnd");
@@ -97,7 +99,7 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
 
         List<Assessment> assessments = new ArrayList<>();
         for(Assessment a: repository.getAllAssessments()){
-            if (a.getAssessmentCourseId() == courseId){
+            if (a.getCourseId() == courseId){
                 assessments.add(a);
             }
         }
@@ -118,4 +120,36 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
     public void deleteCourseButton(View view) {
 
     }
+
+    //TODO Need to fix this onResume method below
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        repository = new Repository(getApplication());
+
+        final AssessmentAdapter adapter = new AssessmentAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        editCourseNameText.setText(courseTitle);
+        editCourseStartText.setText(courseStart);
+        editCourseEndText.setText(courseEnd);
+        editCourseStatusText.setText(courseStatus);
+        editInstructorNameText.setText(instructorName);
+        editInstructorPhoneText.setText(instructorPhone);
+        editInstructorEmailText.setText(instructorEmail);
+        editCourseNotesText.setText(courseNotes);
+
+        List<Assessment> assessments = new ArrayList<>();
+        for (Assessment a : repository.getAllAssessments()) {
+            if (a.getCourseId() == courseId) {
+                assessments.add(a);
+            }
+        }
+        adapter.setAssessments(assessments);
+    }
+
+
 }

@@ -20,7 +20,7 @@ public class AddEditAssessments extends AppCompatActivity {
     EditText editAssessmentDescription;
 
     int assessmentId;
-    int assessmentCourseId;
+    int courseId;
 
     String assessmentType;
     String assessmentStart;
@@ -54,7 +54,7 @@ public class AddEditAssessments extends AppCompatActivity {
         editAssessmentDescription = findViewById(R.id.editAssessmentDescription);
 
         assessmentId = getIntent().getIntExtra("assessmentId", -1);
-        assessmentCourseId = getIntent().getIntExtra("assessmentCourseId", -1);
+        courseId = getIntent().getIntExtra("courseId", courseId);
         assessmentType = getIntent().getStringExtra("assessmentType");
         assessmentStart = getIntent().getStringExtra("assessmentStart");
         assessmentEnd = getIntent().getStringExtra("assessmentEnd");
@@ -74,11 +74,11 @@ public class AddEditAssessments extends AppCompatActivity {
         Assessment assessment;
         if (assessmentId == -1){
             int newId = repository.getAllAssessments().get(repository.getAllAssessments().size() - 1).getAssessmentId() +1;
-            assessment = new Assessment(newId, assessmentCourseId, editAssessmentType.getText().toString(), editAssessmentStart.getText().toString(),
+            assessment = new Assessment(newId, courseId, editAssessmentType.getText().toString(), editAssessmentStart.getText().toString(),
                     editAssessmentEnd.getText().toString(), editAssessmentTitle.getText().toString(), editAssessmentDescription.getText().toString());
             repository.insert(assessment);
         } else {
-            assessment = new Assessment(assessmentId, assessmentCourseId, editAssessmentType.getText().toString(), editAssessmentStart.getText().toString(),
+            assessment = new Assessment(assessmentId, courseId, editAssessmentType.getText().toString(), editAssessmentStart.getText().toString(),
                     editAssessmentEnd.getText().toString(), editAssessmentTitle.getText().toString(), editAssessmentDescription.getText().toString());
             repository.update(assessment);
         }
@@ -92,6 +92,7 @@ public class AddEditAssessments extends AppCompatActivity {
         intent.putExtra("instructorPhone", instructorPhone);
         intent.putExtra("instructorEmail", instructorEmail);
         intent.putExtra("courseNotes", courseNotes);
-        startActivity(intent);
+        //startActivity(intent);
+        finish();
     }
 }

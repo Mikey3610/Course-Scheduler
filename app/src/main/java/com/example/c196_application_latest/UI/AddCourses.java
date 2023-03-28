@@ -99,5 +99,4 @@ public class AddCourses extends AppCompatActivity {
         finish();
     }
 
-    //TODO Do I need an onResume method here so that term info shows up back in the 'EditTerms_CoursesList' class?
 }
