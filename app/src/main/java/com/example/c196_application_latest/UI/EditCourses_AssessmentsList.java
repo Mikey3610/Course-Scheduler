@@ -14,6 +14,7 @@ import com.example.c196_application_latest.Adapter.CourseAdapter;
 import com.example.c196_application_latest.Database.Repository;
 import com.example.c196_application_latest.Entity.Assessment;
 import com.example.c196_application_latest.Entity.Course;
+import com.example.c196_application_latest.Entity.Term;
 import com.example.c196_application_latest.R;
 
 import java.util.ArrayList;
@@ -115,7 +116,36 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
     }
 
     public void saveEditCourse(View view) {
+        Course course;
+        if (courseId == -1) {
+            int newId = repository.getAllCourses().get(repository.getAllCourses().size() - 1).getCourseId() + 1;
+            course = new Course(newId, termId, editCourseNameText.getText().toString(), editCourseStartText.getText().toString(), editCourseEndText.getText().toString(),
+                    editCourseStatusText.getText().toString(), editInstructorNameText.getText().toString(), editInstructorPhoneText.getText().toString(), editInstructorEmailText.getText().toString(),
+                    editCourseNotesText.getText().toString());
+            repository.insert(course);
+        } else {
+            course = new Course(courseId, termId, editCourseNameText.getText().toString(), editCourseStartText.getText().toString(), editCourseEndText.getText().toString(),
+                    editCourseStatusText.getText().toString(), editInstructorNameText.getText().toString(), editInstructorPhoneText.getText().toString(), editInstructorEmailText.getText().toString(),
+                    editCourseNotesText.getText().toString());
+            repository.update(course);
+        }
+
+        Intent intent = new Intent(EditCourses_AssessmentsList.this, EditTerms_CoursesList.class);
+        //startActivity(intent);
+        finish();
     }
+    /*
+    private int courseId;
+    private int termId;
+    private String courseTitle;
+    private String courseStart;
+    private String courseEnd;
+    private String courseStatus;
+    private String instructorName;
+    private String instructorPhone;
+    private String instructorEmail;
+    private String courseNotes;
+     */
 
     public void deleteCourseButton(View view) {
 
