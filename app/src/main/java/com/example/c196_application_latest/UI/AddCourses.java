@@ -57,8 +57,8 @@ public class AddCourses extends AppCompatActivity {
         editCourseNotes = findViewById(R.id.editCourseNotes);
 
         courseId = getIntent().getIntExtra("courseId", -1);
-        //TODO Should the termID default value below be 'termId' instead of '-1'?
-        termId = getIntent().getIntExtra("termId", -1);
+        //TODO Should the termID default value below be 'termId' or '-1'?
+        termId = getIntent().getIntExtra("termId", termId);
         courseTitle = getIntent().getStringExtra("courseTitle");
         courseStart = getIntent().getStringExtra("courseStart");
         courseEnd = getIntent().getStringExtra("courseEnd");
@@ -88,9 +88,6 @@ public class AddCourses extends AppCompatActivity {
         }
 
         Intent intent = new Intent(AddCourses.this, EditTerms_CoursesList.class);
-        //Testing going back to AllTerms instead of the Terms&Courses page (below)
-        //Intent intent = new Intent(AddCourses.this, AllTerms.class);
-
         intent.putExtra("termId", termId);
         intent.putExtra("termName", termName);
         intent.putExtra("termStart", termStart);

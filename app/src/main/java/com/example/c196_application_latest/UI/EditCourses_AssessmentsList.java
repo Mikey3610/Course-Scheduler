@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -102,6 +104,36 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         adapter.setAssessments(assessments);
 
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_courses, menu);
+        return true;
+    }
+
+
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            case R.id.share:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, editCourseNotesText.getText().toString());
+                sendIntent.putExtra(Intent.EXTRA_TITLE,editCourseNameText.getText().toString());
+                sendIntent.setType("text/plain");
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+                return true;
+            case R.id.notifyCourseStart:
+                return true;
+            case R.id.notifyCourseEnd:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     public void addAssessment(View view) {
         Intent intent = new Intent(EditCourses_AssessmentsList.this, AddEditAssessments.class);
