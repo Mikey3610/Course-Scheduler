@@ -54,7 +54,6 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         editTermEndText = findViewById(R.id.editTermEndText);
 
         //Info from adapters 2nd
-        //TODO Should the default value of the termId below be 'termId' or '-1'?
         termId = getIntent().getIntExtra("termId", termId);
         termName = getIntent().getStringExtra("termName");
         termStart = getIntent().getStringExtra("termStart");
@@ -100,14 +99,11 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //onResume method below
-
     @Override
     protected void onResume() {
         super.onResume();
 
         //TODO Commented out the below line
-        //TODO
         //RecyclerView recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
         repository = new Repository(getApplication());
 
@@ -115,7 +111,6 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Reload data from the database and update the UI elements
         //TODO Added these 3 lines
         editTermNameText.setText(termName);
         editTermStartText.setText(termStart);

@@ -57,14 +57,9 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         recyclerView = findViewById(R.id.AssessmentsForCourseRecyclerView);
         repository = new Repository(getApplication());
 
-        //Repository repo = new Repository(getApplication());
-        //List<Assessment> assessments = repo.getAllAssessments();
-
         final AssessmentAdapter adapter = new AssessmentAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        //adapter.setAssessments(assessments);
 
         editCourseNameText = findViewById(R.id.editCourseNameText);
         editCourseStartText = findViewById(R.id.editCourseStartText);
@@ -134,24 +129,10 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         //startActivity(intent);
         finish();
     }
-    /*
-    private int courseId;
-    private int termId;
-    private String courseTitle;
-    private String courseStart;
-    private String courseEnd;
-    private String courseStatus;
-    private String instructorName;
-    private String instructorPhone;
-    private String instructorEmail;
-    private String courseNotes;
-     */
 
     public void deleteCourseButton(View view) {
 
     }
-
-    //TODO Need to fix this onResume method below
 
     @Override
     protected void onResume() {
