@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.c196_application_latest.Database.Repository;
 import com.example.c196_application_latest.Entity.Assessment;
@@ -82,6 +83,23 @@ public class AddEditAssessments extends AppCompatActivity {
                     editAssessmentEnd.getText().toString(), editAssessmentTitle.getText().toString(), editAssessmentDescription.getText().toString());
             repository.update(assessment);
         }
+
+        Intent intent = new Intent(AddEditAssessments.this, EditCourses_AssessmentsList.class);
+        intent.putExtra("courseTitle", courseTitle);
+        intent.putExtra("courseStart", courseStart);
+        intent.putExtra("courseEnd", courseEnd);
+        intent.putExtra("courseStatus", courseStatus);
+        intent.putExtra("instructorName", instructorName);
+        intent.putExtra("instructorPhone", instructorPhone);
+        intent.putExtra("instructorEmail", instructorEmail);
+        intent.putExtra("courseNotes", courseNotes);
+        //startActivity(intent);
+        finish();
+    }
+
+    public void deleteAssessment(View view) {
+        Assessment assessmentToDelete = new Assessment(assessmentId, courseId, assessmentType, assessmentStart, assessmentEnd, assessmentTitle, assessmentDescription);
+        repository.delete(assessmentToDelete);
 
         Intent intent = new Intent(AddEditAssessments.this, EditCourses_AssessmentsList.class);
         intent.putExtra("courseTitle", courseTitle);

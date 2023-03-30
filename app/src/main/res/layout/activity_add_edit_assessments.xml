@@ -123,11 +123,25 @@
         android:id="@+id/saveEditAddAssessment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:clickable="true"
         android:onClick="saveEditAddAssessment"
         android:text="Save"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
+    <Button
+        android:id="@+id/deleteAssessment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:text="Delete Assessment"
+        android:clickable="true"
+        android:onClick="deleteAssessment"
+        app:layout_constraintBottom_toBottomOf="@+id/saveEditAddAssessment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/saveEditAddAssessment"
+        app:layout_constraintTop_toTopOf="@+id/saveEditAddAssessment" />
 </androidx.constraintlayout.widget.ConstraintLayout>
