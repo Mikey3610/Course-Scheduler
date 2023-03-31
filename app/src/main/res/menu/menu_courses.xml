@@ -4,7 +4,7 @@
 
     <item android:title="Share Course Notes"
         android:orderInCategory="100"
-        android:id="@+id/share"/>
+        android:id="@+id/shareCourseNotes"/>
     <item android:title="Set Start Notification"
         android:orderInCategory="100"
         android:id="@+id/notifyCourseStart"/>
