@@ -28,13 +28,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         Repository repo = new Repository(getApplication());
 
-        Term term = new Term(1, "Term 1", "01/01/23", "06/30/23");
+        Term term = new Term(1, "Sample Data - Term 1", "01/01/23", "06/30/23");
         repo.insert(term);
 
         Course course = new Course(1, 1, "C196", "01/01/23", "06/30/23", "In-Progress", "Bill Jing", "123-456-7890", "bill.jing@wgu.edu", "Mobile Application Course");
         repo.insert(course);
 
-        Assessment assessment = new Assessment(1, 1, "Basic Quiz", "03/25/23", "03/25/23", "C196 Quiz", "Normal quiz for C196");
+        Assessment assessment = new Assessment(1, 1, "Basic Quiz", "04/25/23", "04/25/23", "C196 Quiz", "Normal quiz for C196");
         repo.insert(assessment);
 
 
