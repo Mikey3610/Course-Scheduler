@@ -4,8 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,11 +18,15 @@ import android.widget.Toast;
 import com.example.c196_application_latest.Adapter.CourseAdapter;
 import com.example.c196_application_latest.Adapter.TermAdapter;
 import com.example.c196_application_latest.Database.Repository;
+import com.example.c196_application_latest.Entity.Assessment;
 import com.example.c196_application_latest.Entity.Course;
 import com.example.c196_application_latest.Entity.Term;
 import com.example.c196_application_latest.R;
+import com.example.c196_application_latest.Receiver.MyReceiver;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class EditTerms_CoursesList extends AppCompatActivity {
@@ -30,7 +39,9 @@ public class EditTerms_CoursesList extends AppCompatActivity {
     String termEnd;
     Repository repository;
 
-    //TODO Added declaration of Recyclerview here
+    Term currentTerm;
+    int numCourses;
+
     RecyclerView recyclerView;
 
     @Override
@@ -40,7 +51,6 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //TODO Removed the RecyclerView class declaration from the line below
         recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
         repository = new Repository(getApplication());
 
@@ -71,6 +81,37 @@ public class EditTerms_CoursesList extends AppCompatActivity {
             }
         }
         adapter.setCourses(courses);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_allterms, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            case R.id.deleteTerm:
+                for (Term t : repository.getAllTerms()) {
+                    if (t.getTermId() == termId) currentTerm = t;
+                }
+
+                numCourses = 0;
+                for (Course course : repository.getAllCourses()) {
+                    if (course.getTermId() == termId) ++numCourses;
+                }
+
+                if (numCourses == 0) {
+                    repository.delete(currentTerm);
+                    Toast.makeText(EditTerms_CoursesList.this, currentTerm.getTermName() + " was deleted", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(EditTerms_CoursesList.this, "Can't delete a term with assigned courses", Toast.LENGTH_LONG).show();
+                }
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void saveAddTerm(View view) {

@@ -36,6 +36,7 @@ public class AllTerms extends AppCompatActivity {
         adapter.setTerms(terms);
     }
 
+    /*
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_allterms, menu);
         return true;
@@ -49,6 +50,7 @@ public class AllTerms extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+     */
 
     public void addTerm(View view) {
         Intent intent = new Intent(AllTerms.this, AddTerms.class);

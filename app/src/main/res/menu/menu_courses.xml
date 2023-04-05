@@ -11,4 +11,8 @@
     <item android:title="Set End Notification"
         android:orderInCategory="100"
         android:id="@+id/notifyCourseEnd"/>
+    <item
+        android:orderInCategory="101"
+        android:title="Delete Course"
+        android:id="@+id/deleteCourse"/>
 </menu>

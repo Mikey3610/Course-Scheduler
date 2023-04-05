@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.c196_application_latest.Adapter.AssessmentAdapter;
 import com.example.c196_application_latest.Database.Repository;
@@ -66,6 +67,9 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
     Repository repository;
 
     RecyclerView recyclerView;
+
+    Course currentCourse;
+    int numAssessments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -244,6 +248,23 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
                 PendingIntent cEndSender = PendingIntent.getBroadcast(EditCourses_AssessmentsList.this,MainActivity.numAlert++,cEndIntent,0);
                 AlarmManager cEndAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 cEndAlarmManager.set(AlarmManager.RTC_WAKEUP, cEndTrigger, cEndSender);
+                return true;
+            case R.id.deleteCourse:
+                for (Course c : repository.getAllCourses()) {
+                    if (c.getCourseId() == courseId) currentCourse = c;
+                }
+
+                numAssessments = 0;
+                for (Assessment assessment : repository.getAllAssessments()) {
+                    if (assessment.getCourseId() == courseId) ++numAssessments;
+                }
+
+                if (numAssessments == 0) {
+                    repository.delete(currentCourse);
+                    Toast.makeText(EditCourses_AssessmentsList.this, currentCourse.getCourseTitle() + " was deleted", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(EditCourses_AssessmentsList.this, "Can't delete a course with assessments", Toast.LENGTH_LONG).show();
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);

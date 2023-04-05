@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.c196_application_latest.Database.Repository;
 import com.example.c196_application_latest.Entity.Assessment;
@@ -60,6 +61,9 @@ public class AddEditAssessments extends AppCompatActivity {
     String instructorPhone;
     String instructorEmail;
     String courseNotes;
+
+    Assessment currentAssessment;
+    int numAssessments;
 
 
     @Override
@@ -228,7 +232,6 @@ public class AddEditAssessments extends AppCompatActivity {
                 startActivity(shareIntent);
                 return true;
             case R.id.notifyAssessmentStart:
-                //TODO New from 4/2 to below
                 String assessStart = editAssessmentStart.getText().toString();
                 Date myStartDate = null;
 
@@ -264,6 +267,15 @@ public class AddEditAssessments extends AppCompatActivity {
                 AlarmManager endAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 endAlarmManager.set(AlarmManager.RTC_WAKEUP, endTrigger, endSender);
                 return true;
+            case R.id.deleteAssessment:
+                for (Assessment a : repository.getAllAssessments()) {
+                    if (a.getAssessmentId() == assessmentId) currentAssessment = a;
+                }
+                repository.delete(currentAssessment);
+                Toast.makeText(AddEditAssessments.this, currentAssessment.getAssessmentTitle() + " was deleted", Toast.LENGTH_LONG).show();
+                return true;
+
+
         }
         return super.onOptionsItemSelected(item);
     }
