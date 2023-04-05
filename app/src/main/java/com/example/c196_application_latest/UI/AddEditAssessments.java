@@ -2,7 +2,10 @@ package com.example.c196_application_latest.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +17,7 @@ import android.widget.EditText;
 import com.example.c196_application_latest.Database.Repository;
 import com.example.c196_application_latest.Entity.Assessment;
 import com.example.c196_application_latest.R;
+import com.example.c196_application_latest.Receiver.MyReceiver;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +32,6 @@ public class AddEditAssessments extends AppCompatActivity {
     EditText editAssessmentEnd;
     EditText editAssessmentDescription;
 
-    //NEW
     DatePickerDialog.OnDateSetListener startDate;
     final Calendar myCalendarStart = Calendar.getInstance();
 
@@ -68,9 +71,9 @@ public class AddEditAssessments extends AppCompatActivity {
 
         editAssessmentTitle = findViewById(R.id.editAssessmentTitle);
         editAssessmentType = findViewById(R.id.editAssessmentType);
+
         editAssessmentStart = findViewById(R.id.editAssessmentStart);
 
-        //NEW
         myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         editAssessmentStart.setOnClickListener(new View.OnClickListener(){
@@ -79,13 +82,14 @@ public class AddEditAssessments extends AppCompatActivity {
             public void onClick(View v) {
                 Date date;
                 String info = editAssessmentStart.getText().toString();
-                if (info.equals(""))info="04/10/23";
+                if (info.equals(""))info="04/25/23";
                 try {
                     myCalendarStart.setTime(sdf.parse(info));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                new DatePickerDialog(AddEditAssessments.this, startDate, myCalendarStart.get(Calendar.YEAR), myCalendarStart.get(Calendar.MONTH),
+                new DatePickerDialog(AddEditAssessments.this, startDate, myCalendarStart.get(Calendar.YEAR),
+                        myCalendarStart.get(Calendar.MONTH),
                         myCalendarStart.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -213,18 +217,52 @@ public class AddEditAssessments extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
+
             case R.id.shareAssessmentNotes:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, editAssessmentDescription.getText().toString());
-                sendIntent.putExtra(Intent.EXTRA_TITLE,editAssessmentTitle.getText().toString());
+                sendIntent.putExtra(Intent.EXTRA_TITLE, editAssessmentTitle.getText().toString());
                 sendIntent.setType("text/plain");
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
                 startActivity(shareIntent);
                 return true;
             case R.id.notifyAssessmentStart:
+                //TODO New from 4/2 to below
+                String assessStart = editAssessmentStart.getText().toString();
+                Date myStartDate = null;
+
+                try {
+                    myStartDate = sdf.parse(assessStart);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Long trigger = myStartDate.getTime();
+                Intent intent = new Intent(AddEditAssessments.this, MyReceiver.class);
+                intent.putExtra("key", editAssessmentTitle.getText().toString() + " starts today.");
+
+                PendingIntent sender = PendingIntent.getBroadcast(AddEditAssessments.this,MainActivity.numAlert++,intent,0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 return true;
+
             case R.id.notifyAssessmentEnd:
+                String assessEnd = editAssessmentEnd.getText().toString();
+                Date myEndDate = null;
+                try {
+                    myEndDate = sdf.parse(assessEnd);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Long endTrigger = myEndDate.getTime();
+                Intent endIntent = new Intent(AddEditAssessments.this, MyReceiver.class);
+                endIntent.putExtra("key", editAssessmentTitle.getText().toString() + " ends today.");
+
+                PendingIntent endSender = PendingIntent.getBroadcast(AddEditAssessments.this,MainActivity.numAlert++,endIntent,0);
+                AlarmManager endAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                endAlarmManager.set(AlarmManager.RTC_WAKEUP, endTrigger, endSender);
                 return true;
         }
         return super.onOptionsItemSelected(item);

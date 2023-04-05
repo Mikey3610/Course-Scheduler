@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +21,7 @@ import com.example.c196_application_latest.Database.Repository;
 import com.example.c196_application_latest.Entity.Assessment;
 import com.example.c196_application_latest.Entity.Course;
 import com.example.c196_application_latest.R;
+import com.example.c196_application_latest.Receiver.MyReceiver;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,7 +42,6 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
     EditText editInstructorEmailText;
     EditText editCourseNotesText;
 
-    //NEW
     DatePickerDialog.OnDateSetListener startDate;
     final Calendar myCalendarStart = Calendar.getInstance();
 
@@ -81,7 +84,6 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         editCourseNameText = findViewById(R.id.editCourseNameText);
         editCourseStartText = findViewById(R.id.editCourseStartText);
 
-        //NEW
         myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         editCourseStartText.setOnClickListener(new View.OnClickListener(){
@@ -121,7 +123,7 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
             public void onClick(View v) {
                 Date date;
                 String info = editCourseEndText.getText().toString();
-                if (info.equals(""))info="04/10/23";
+                if (info.equals(""))info="04/25/23";
                 try {
                     myCalendarEnd.setTime(sdf.parse(info));
                 } catch (ParseException e) {
@@ -193,8 +195,6 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         return true;
     }
 
-
-
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -210,8 +210,40 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
                 startActivity(shareIntent);
                 return true;
             case R.id.notifyCourseStart:
+                String courseStart = editCourseStartText.getText().toString();
+                Date courseStartDate = null;
+
+                try {
+                    courseStartDate = sdf.parse(courseStart);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Long cStartTrigger = courseStartDate.getTime();
+                Intent cStartIntent = new Intent(EditCourses_AssessmentsList.this, MyReceiver.class);
+                cStartIntent.putExtra("key", editCourseNameText.getText().toString() + " starts today.");
+
+                PendingIntent sender = PendingIntent.getBroadcast(EditCourses_AssessmentsList.this,MainActivity.numAlert++,cStartIntent,0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, cStartTrigger, sender);
                 return true;
             case R.id.notifyCourseEnd:
+                String courseEnd = editCourseEndText.getText().toString();
+                Date courseEndDate = null;
+
+                try {
+                    courseEndDate = sdf.parse(courseEnd);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Long cEndTrigger = courseEndDate.getTime();
+                Intent cEndIntent = new Intent(EditCourses_AssessmentsList.this, MyReceiver.class);
+                cEndIntent.putExtra("key", editCourseNameText.getText().toString() + " ends today.");
+
+                PendingIntent cEndSender = PendingIntent.getBroadcast(EditCourses_AssessmentsList.this,MainActivity.numAlert++,cEndIntent,0);
+                AlarmManager cEndAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                cEndAlarmManager.set(AlarmManager.RTC_WAKEUP, cEndTrigger, cEndSender);
                 return true;
         }
         return super.onOptionsItemSelected(item);
