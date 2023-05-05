@@ -14,7 +14,6 @@ import com.example.c196_application_latest.Entity.Term;
 import com.example.c196_application_latest.R;
 
 public class MainActivity extends AppCompatActivity {
-    //TODO 4/2 Created for the "AddEditAssessments" class notificationManager for incrementing messages
     public static int numAlert;
 
     @Override
