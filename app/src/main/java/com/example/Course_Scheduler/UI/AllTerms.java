@@ -1,4 +1,4 @@
-package com.example.c196_application_latest.UI;
+package com.example.Course_Scheduler.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,14 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
-import com.example.c196_application_latest.Adapter.TermAdapter;
-import com.example.c196_application_latest.Database.Repository;
-import com.example.c196_application_latest.Entity.Term;
-import com.example.c196_application_latest.R;
+import com.example.Course_Scheduler.Adapter.TermAdapter;
+import com.example.Course_Scheduler.Database.Repository;
+import com.example.Course_Scheduler.Entity.Term;
+import com.example.Course_Scheduler.R;
 
 import java.util.List;
 

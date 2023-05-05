@@ -1,4 +1,4 @@
-package com.example.c196_application_latest.Receiver;
+package com.example.Course_Scheduler.Receiver;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
-import com.example.c196_application_latest.R;
+import com.example.Course_Scheduler.R;
 
 public class MyReceiver extends BroadcastReceiver {
 

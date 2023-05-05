@@ -1,4 +1,4 @@
-package com.example.c196_application_latest.DAO;
+package com.example.Course_Scheduler.DAO;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.c196_application_latest.Entity.Assessment;
+import com.example.Course_Scheduler.Entity.Assessment;
 
 import java.util.List;
 

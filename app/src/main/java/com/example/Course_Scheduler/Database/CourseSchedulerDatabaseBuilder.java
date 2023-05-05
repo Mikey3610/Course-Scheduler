@@ -1,4 +1,4 @@
-package com.example.c196_application_latest.Database;
+package com.example.Course_Scheduler.Database;
 
 import android.content.Context;
 
@@ -6,12 +6,12 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.c196_application_latest.DAO.AssessmentDAO;
-import com.example.c196_application_latest.DAO.CourseDAO;
-import com.example.c196_application_latest.DAO.TermDAO;
-import com.example.c196_application_latest.Entity.Assessment;
-import com.example.c196_application_latest.Entity.Course;
-import com.example.c196_application_latest.Entity.Term;
+import com.example.Course_Scheduler.DAO.AssessmentDAO;
+import com.example.Course_Scheduler.DAO.CourseDAO;
+import com.example.Course_Scheduler.DAO.TermDAO;
+import com.example.Course_Scheduler.Entity.Assessment;
+import com.example.Course_Scheduler.Entity.Course;
+import com.example.Course_Scheduler.Entity.Term;
 
 
 @Database(entities={Assessment.class, Course.class, Term.class}, version=1, exportSchema = false)

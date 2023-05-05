@@ -1,17 +1,16 @@
-package com.example.c196_application_latest.UI;
+package com.example.Course_Scheduler.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
-import com.example.c196_application_latest.Database.Repository;
-import com.example.c196_application_latest.Entity.Assessment;
-import com.example.c196_application_latest.Entity.Course;
-import com.example.c196_application_latest.Entity.Term;
-import com.example.c196_application_latest.R;
+import com.example.Course_Scheduler.Database.Repository;
+import com.example.Course_Scheduler.Entity.Assessment;
+import com.example.Course_Scheduler.Entity.Course;
+import com.example.Course_Scheduler.Entity.Term;
+import com.example.Course_Scheduler.R;
 
 public class MainActivity extends AppCompatActivity {
     public static int numAlert;

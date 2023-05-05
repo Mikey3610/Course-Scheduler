@@ -1,4 +1,4 @@
-package com.example.c196_application_latest.UI;
+package com.example.Course_Scheduler.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,12 +17,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.c196_application_latest.Adapter.AssessmentAdapter;
-import com.example.c196_application_latest.Database.Repository;
-import com.example.c196_application_latest.Entity.Assessment;
-import com.example.c196_application_latest.Entity.Course;
-import com.example.c196_application_latest.R;
-import com.example.c196_application_latest.Receiver.MyReceiver;
+import com.example.Course_Scheduler.Adapter.AssessmentAdapter;
+import com.example.Course_Scheduler.Database.Repository;
+import com.example.Course_Scheduler.Entity.Assessment;
+import com.example.Course_Scheduler.Entity.Course;
+import com.example.Course_Scheduler.R;
+import com.example.Course_Scheduler.Receiver.MyReceiver;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

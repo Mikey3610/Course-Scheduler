@@ -1,4 +1,4 @@
-package com.example.c196_application_latest;
+package com.example.Course_Scheduler;
 
 import android.content.Context;
 

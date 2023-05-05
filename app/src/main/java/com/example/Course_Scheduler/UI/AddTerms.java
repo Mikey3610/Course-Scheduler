@@ -1,4 +1,4 @@
-package com.example.c196_application_latest.UI;
+package com.example.Course_Scheduler.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import com.example.c196_application_latest.Database.Repository;
-import com.example.c196_application_latest.Entity.Term;
-import com.example.c196_application_latest.R;
+import com.example.Course_Scheduler.Database.Repository;
+import com.example.Course_Scheduler.Entity.Term;
+import com.example.Course_Scheduler.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

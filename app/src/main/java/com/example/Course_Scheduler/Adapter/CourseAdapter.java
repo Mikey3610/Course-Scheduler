@@ -1,4 +1,4 @@
-package com.example.c196_application_latest.Adapter;
+package com.example.Course_Scheduler.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.c196_application_latest.Entity.Course;
-import com.example.c196_application_latest.R;
-import com.example.c196_application_latest.UI.EditCourses_AssessmentsList;
+import com.example.Course_Scheduler.Entity.Course;
+import com.example.Course_Scheduler.R;
+import com.example.Course_Scheduler.UI.EditCourses_AssessmentsList;
 
 import java.util.List;
 

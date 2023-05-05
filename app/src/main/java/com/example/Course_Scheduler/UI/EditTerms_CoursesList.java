@@ -1,12 +1,9 @@
-package com.example.c196_application_latest.UI;
+package com.example.Course_Scheduler.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,18 +12,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.c196_application_latest.Adapter.CourseAdapter;
-import com.example.c196_application_latest.Adapter.TermAdapter;
-import com.example.c196_application_latest.Database.Repository;
-import com.example.c196_application_latest.Entity.Assessment;
-import com.example.c196_application_latest.Entity.Course;
-import com.example.c196_application_latest.Entity.Term;
-import com.example.c196_application_latest.R;
-import com.example.c196_application_latest.Receiver.MyReceiver;
+import com.example.Course_Scheduler.Adapter.CourseAdapter;
+import com.example.Course_Scheduler.Database.Repository;
+import com.example.Course_Scheduler.Entity.Course;
+import com.example.Course_Scheduler.Entity.Term;
+import com.example.Course_Scheduler.R;
 
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class EditTerms_CoursesList extends AppCompatActivity {

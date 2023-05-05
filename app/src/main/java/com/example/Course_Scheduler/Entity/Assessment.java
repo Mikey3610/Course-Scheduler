@@ -1,4 +1,4 @@
-package com.example.c196_application_latest.Entity;
+package com.example.Course_Scheduler.Entity;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

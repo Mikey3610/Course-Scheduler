@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.c196_application_latest'
+    namespace 'com.example.Course_Scheduler'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.c196_application_latest"
+        applicationId "com.example.Course_Scheduler"
         minSdk 26
         targetSdk 33
         versionCode 1

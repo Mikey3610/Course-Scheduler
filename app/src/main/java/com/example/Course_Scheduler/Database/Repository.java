@@ -1,13 +1,13 @@
-package com.example.c196_application_latest.Database;
+package com.example.Course_Scheduler.Database;
 
 import android.app.Application;
 
-import com.example.c196_application_latest.DAO.AssessmentDAO;
-import com.example.c196_application_latest.DAO.CourseDAO;
-import com.example.c196_application_latest.DAO.TermDAO;
-import com.example.c196_application_latest.Entity.Assessment;
-import com.example.c196_application_latest.Entity.Course;
-import com.example.c196_application_latest.Entity.Term;
+import com.example.Course_Scheduler.DAO.AssessmentDAO;
+import com.example.Course_Scheduler.DAO.CourseDAO;
+import com.example.Course_Scheduler.DAO.TermDAO;
+import com.example.Course_Scheduler.Entity.Assessment;
+import com.example.Course_Scheduler.Entity.Course;
+import com.example.Course_Scheduler.Entity.Term;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

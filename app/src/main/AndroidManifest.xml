@@ -10,69 +10,69 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.C196_Application_Latest"
+        android:theme="@style/Theme.Course_Scheduler"
         tools:targetApi="31">
         <receiver
-            android:name="com.example.c196_application_latest.Receiver.MyReceiver"
+            android:name="com.example.Course_Scheduler.Receiver.MyReceiver"
             android:enabled="true"
             android:exported="true"></receiver>
 
         <activity
-            android:name="com.example.c196_application_latest.UI.AddEditAssessments"
+            android:name="com.example.Course_Scheduler.UI.AddEditAssessments"
             android:exported="false"
             android:label="Add/Edit Assessments"
-            android:parentActivityName="com.example.c196_application_latest.UI.EditCourses_AssessmentsList">
+            android:parentActivityName="com.example.Course_Scheduler.UI.EditCourses_AssessmentsList">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.c196_application_latest.UI.AddCourses"
+            android:name="com.example.Course_Scheduler.UI.AddCourses"
             android:exported="false"
             android:label="Add Courses"
-            android:parentActivityName="com.example.c196_application_latest.UI.EditTerms_CoursesList">
+            android:parentActivityName="com.example.Course_Scheduler.UI.EditTerms_CoursesList">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.c196_application_latest.UI.AddTerms"
+            android:name="com.example.Course_Scheduler.UI.AddTerms"
             android:exported="false"
             android:label="Add Terms"
-            android:parentActivityName="com.example.c196_application_latest.UI.AllTerms">
+            android:parentActivityName="com.example.Course_Scheduler.UI.AllTerms">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.c196_application_latest.UI.EditCourses_AssessmentsList"
+            android:name="com.example.Course_Scheduler.UI.EditCourses_AssessmentsList"
             android:exported="false"
             android:label="Edit Courses and Assessments List"
-            android:parentActivityName="com.example.c196_application_latest.UI.EditTerms_CoursesList">
+            android:parentActivityName="com.example.Course_Scheduler.UI.EditTerms_CoursesList">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.c196_application_latest.UI.EditTerms_CoursesList"
+            android:name="com.example.Course_Scheduler.UI.EditTerms_CoursesList"
             android:exported="false"
             android:label="Edit Terms and Courses List"
-            android:parentActivityName="com.example.c196_application_latest.UI.AllTerms">
+            android:parentActivityName="com.example.Course_Scheduler.UI.AllTerms">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.c196_application_latest.UI.AllTerms"
+            android:name="com.example.Course_Scheduler.UI.AllTerms"
             android:exported="false"
             android:label="All Terms"
-            android:parentActivityName="com.example.c196_application_latest.UI.MainActivity">
+            android:parentActivityName="com.example.Course_Scheduler.UI.MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.c196_application_latest.UI.MainActivity"
+            android:name="com.example.Course_Scheduler.UI.MainActivity"
             android:exported="true"
             android:label="Course Scheduler">
             <intent-filter>
