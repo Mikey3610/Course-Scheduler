@@ -127,7 +127,6 @@ public class EditTerms_CoursesList extends AppCompatActivity {
 
         Intent intent = new Intent(EditTerms_CoursesList.this, AllTerms.class);
         startActivity(intent);
-        //finish();
     }
 
     public void deleteTerm(View view) {
@@ -144,15 +143,12 @@ public class EditTerms_CoursesList extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        //TODO Commented out the below line
-        //RecyclerView recyclerView = findViewById(R.id.CoursesForTermRecyclerView);
         repository = new Repository(getApplication());
 
         final CourseAdapter adapter = new CourseAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //TODO Added these 3 lines
         editTermNameText.setText(termName);
         editTermStartText.setText(termStart);
         editTermEndText.setText(termEnd);
@@ -165,13 +161,4 @@ public class EditTerms_CoursesList extends AppCompatActivity {
         }
         adapter.setCourses(courses);
     }
-
-
 }
-
-    //Create a list from courses
-    //Assign a repo using the getAllCourses method
-    //Create a recyclerview
-    //Create a courseadapter
-    //For the recyclerview, set the adapter and the .setlayoutmanager
-    //for loop which will cycle through list to get all the correct courses for the term

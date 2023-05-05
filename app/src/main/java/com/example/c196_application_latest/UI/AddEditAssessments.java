@@ -188,7 +188,6 @@ public class AddEditAssessments extends AppCompatActivity {
         intent.putExtra("instructorPhone", instructorPhone);
         intent.putExtra("instructorEmail", instructorEmail);
         intent.putExtra("courseNotes", courseNotes);
-        //startActivity(intent);
         finish();
     }
 
@@ -205,7 +204,6 @@ public class AddEditAssessments extends AppCompatActivity {
         intent.putExtra("instructorPhone", instructorPhone);
         intent.putExtra("instructorEmail", instructorEmail);
         intent.putExtra("courseNotes", courseNotes);
-        //startActivity(intent);
         finish();
     }
 

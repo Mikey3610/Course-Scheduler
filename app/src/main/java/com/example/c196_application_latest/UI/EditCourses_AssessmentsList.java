@@ -294,7 +294,6 @@ public class EditCourses_AssessmentsList extends AppCompatActivity {
         }
 
         Intent intent = new Intent(EditCourses_AssessmentsList.this, EditTerms_CoursesList.class);
-        //startActivity(intent);
         finish();
     }
 

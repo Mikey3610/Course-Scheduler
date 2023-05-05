@@ -36,22 +36,6 @@ public class AllTerms extends AppCompatActivity {
         adapter.setTerms(terms);
     }
 
-    /*
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_allterms, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-     */
-
     public void addTerm(View view) {
         Intent intent = new Intent(AllTerms.this, AddTerms.class);
         startActivity(intent);

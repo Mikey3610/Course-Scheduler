@@ -49,7 +49,6 @@ public class AddTerms extends AppCompatActivity {
         editTermStart = findViewById(R.id.editTermStart);
         editTermEnd = findViewById(R.id.editTermEnd);
 
-        //NEW
         myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         editTermStart.setOnClickListener(new View.OnClickListener(){
@@ -137,6 +136,5 @@ public class AddTerms extends AppCompatActivity {
 
         Intent intent = new Intent(AddTerms.this, AllTerms.class);
         startActivity(intent);
-        //finish();
     }
 }

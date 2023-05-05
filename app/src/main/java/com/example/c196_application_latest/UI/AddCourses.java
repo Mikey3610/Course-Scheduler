@@ -134,7 +134,6 @@ public class AddCourses extends AppCompatActivity {
         editCourseNotes = findViewById(R.id.editCourseNotes);
 
         courseId = getIntent().getIntExtra("courseId", -1);
-        //TODO Should the termID default value below be 'termId' or '-1'?
         termId = getIntent().getIntExtra("termId", termId);
         courseTitle = getIntent().getStringExtra("courseTitle");
         courseStart = getIntent().getStringExtra("courseStart");
@@ -177,7 +176,6 @@ public class AddCourses extends AppCompatActivity {
         intent.putExtra("termName", termName);
         intent.putExtra("termStart", termStart);
         intent.putExtra("termEnd", termEnd);
-        //startActivity(intent);
         finish();
     }
 
